@@ -1,0 +1,16 @@
+.main-content {
+  flex: 1;
+  height: 100%;
+  background-color: var(--calcite-color-background);
+}
+
+calcite-action-bar {
+  width: 48px;
+}
+
+/* ShellPanel feste Breite 450px */
+calcite-shell-panel {
+  --calcite-shell-panel-width: 450px;
+  --calcite-shell-panel-max-width: 450px;
+  --calcite-shell-panel-min-width: 450px;
+}
