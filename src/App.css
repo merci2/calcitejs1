@@ -1,3 +1,4 @@
+/* src/App.css */
 .main-content {
   flex: 1;
   height: 100%;
@@ -10,3 +11,11 @@ calcite-shell-panel {
   --calcite-shell-panel-max-width: 420px;
   --calcite-shell-panel-min-width: 420px;
 }
+
+/* calcite-panel {
+  background: red !important;
+  --calcite-panel-background-color: yellow !important;
+  --calcite-color-foreground-1: green !important;
+  --calcite-ui-foreground-1: blue !important;
+} */
+

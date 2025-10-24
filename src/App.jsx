@@ -7,6 +7,8 @@ import {
 import { useState } from 'react'
 import ButtonGroupPanel from './pages/ButtonGroupPanel/ButtonGroupPanel'
 import SegmentedControlPanel from './pages/SegmentedControlPanel/SegmentedControlPanel'
+import ColorsPanel from './pages/ColorsPanel/ColorsPanel'
+import ColorsContent from './pages/ColorsPanel/ColorsContent'
 import './App.css'
 
 function App() {
@@ -37,6 +39,12 @@ function App() {
           active={activePage === 'segmented'}
           onClick={() => setActivePage(activePage === 'segmented' ? null : 'segmented')}
         />
+        <CalciteAction
+          text="Colors"
+          icon="palette"
+          active={activePage === 'colors'}
+          onClick={() => setActivePage(activePage === 'colors' ? null : 'colors')}
+        />
       </CalciteActionBar>
 
       {/* Content Panel that appears/disappears based on active page */}
@@ -49,12 +57,14 @@ function App() {
         >
           {activePage === 'buttongroup' && <ButtonGroupPanel onClose={handleClose} />}
           {activePage === 'segmented' && <SegmentedControlPanel onClose={handleClose} />}
+          {activePage === 'colors' && <ColorsPanel onClose={handleClose} />}
         </CalciteShellPanel>
       )}
 
       {/* Main Content Area */}
       <div className="main-content">
         {/* Dieser Bereich bleibt leer und wächst mit */}
+        {activePage === 'colors' && <ColorsContent />}
       </div>
     </CalciteShell>
   )
