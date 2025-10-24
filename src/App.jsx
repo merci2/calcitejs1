@@ -28,16 +28,16 @@ function App() {
         onCalciteActionBarToggle={(e) => setExpanded(e.target.expanded)}
       >
         <CalciteAction
-          text="Button Group"
-          icon="button"
-          active={activePage === 'buttongroup'}
-          onClick={() => setActivePage(activePage === 'buttongroup' ? null : 'buttongroup')}
-        />
-        <CalciteAction
           text="Segmented Control"
           icon="toggle"
           active={activePage === 'segmented'}
           onClick={() => setActivePage(activePage === 'segmented' ? null : 'segmented')}
+        />
+        <CalciteAction
+          text="Button Group"
+          icon="button"
+          active={activePage === 'buttongroup'}
+          onClick={() => setActivePage(activePage === 'buttongroup' ? null : 'buttongroup')}
         />
         <CalciteAction
           text="Colors"
