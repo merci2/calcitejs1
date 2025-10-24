@@ -11,6 +11,7 @@ import './App.css'
 
 function App() {
   const [activePage, setActivePage] = useState(null)
+  const [expanded, setExpanded] = useState(false)
 
   const handleClose = () => {
     setActivePage(null)
@@ -19,7 +20,11 @@ function App() {
   return (
     <CalciteShell>
       {/* Left Navigation with Icons */}
-      <CalciteActionBar slot="panel-start">
+      <CalciteActionBar 
+        slot="panel-start"
+        expanded={expanded}
+        onCalciteActionBarToggle={(e) => setExpanded(e.target.expanded)}
+      >
         <CalciteAction
           text="Button Group"
           icon="button"

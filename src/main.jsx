@@ -4,9 +4,7 @@ import './index.css'
 import App from './App.jsx'
 import { defineCustomElements } from '@esri/calcite-components/dist/loader'
 
-defineCustomElements(window, { 
-  resourcesUrl: 'https://js.arcgis.com/calcite-components/2.13.2/assets' 
-})
+defineCustomElements(window)
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
