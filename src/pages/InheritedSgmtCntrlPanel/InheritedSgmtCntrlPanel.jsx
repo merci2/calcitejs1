@@ -56,20 +56,40 @@ function InheritedSgmtCntrlPanel({ onClose }) {
 
         {/* Accordion */}
         <CalciteAccordion>
-          <CalciteAccordionItem heading="Auswahl 1">
-            <p>Alle Styles sind explizit definiert</p>
+          <CalciteAccordionItem heading="Option 1">
+            <p>Site Title</p>
+            <p>Short Description</p>
+            <p>Grouped by Type: Option 1</p>
+            <p>Updated</p>
+            <p>Grouped by Client: Client 1</p>
           </CalciteAccordionItem>
-          <CalciteAccordionItem heading="Auswahl 2">
-            <p>Sie können jeden Wert anpassen</p>
+          <CalciteAccordionItem heading="Option 2">
+            <p>Site Title</p>
+            <p>Short Description</p>
+            <p>Grouped by Type: Option 1</p>
+            <p>Updated</p>
+            <p>Grouped by Client: Client 1</p>
           </CalciteAccordionItem>
-          <CalciteAccordionItem heading="Auswahl 3">
-            <p>Calcite Design Tokens verwenden</p>
+          <CalciteAccordionItem heading="Option 3">
+            <p>Site Title</p>
+            <p>Short Description</p>
+            <p>Grouped by Type: Option 1</p>
+            <p>Updated</p>
+            <p>Grouped by Client: Client 1</p>
           </CalciteAccordionItem>
-          <CalciteAccordionItem heading="Auswahl 4">
-            <p>Oder eigene Werte setzen</p>
+          <CalciteAccordionItem heading="Option 4">
+            <p>Site Title</p>
+            <p>Short Description</p>
+            <p>Grouped by Type: Option 1</p>
+            <p>Updated</p>
+            <p>Grouped by Client: Client 1</p>
           </CalciteAccordionItem>
-          <CalciteAccordionItem heading="Auswahl 5">
-            <p>Volle Kontrolle über das Styling</p>
+          <CalciteAccordionItem heading="Option 5">
+            <p>Site Title</p>
+            <p>Short Description</p>
+            <p>Grouped by Type: Option 1</p>
+            <p>Updated</p>
+            <p>Grouped by Client: Client 1</p>
           </CalciteAccordionItem>
         </CalciteAccordion>
       </div>
