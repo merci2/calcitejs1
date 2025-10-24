@@ -9,6 +9,7 @@ import ButtonGroupPanel from './pages/ButtonGroupPanel/ButtonGroupPanel'
 import SegmentedControlPanel from './pages/SegmentedControlPanel/SegmentedControlPanel'
 import ColorsPanel from './pages/ColorsPanel/ColorsPanel'
 import ColorsContent from './pages/ColorsPanel/ColorsContent'
+import InheritedSgmtCntrlPanel from './pages/InheritedSgmtCntrlPanel/InheritedSgmtCntrlPanel'
 import './App.css'
 
 function App() {
@@ -45,6 +46,12 @@ function App() {
           active={activePage === 'colors'}
           onClick={() => setActivePage(activePage === 'colors' ? null : 'colors')}
         />
+        <CalciteAction
+          text="Inherited Styles"
+          icon="coded-value-domain"
+          active={activePage === 'inherited'}
+          onClick={() => setActivePage(activePage === 'inherited' ? null : 'inherited')}
+        />
       </CalciteActionBar>
 
       {/* Content Panel that appears/disappears based on active page */}
@@ -58,6 +65,7 @@ function App() {
           {activePage === 'buttongroup' && <ButtonGroupPanel onClose={handleClose} />}
           {activePage === 'segmented' && <SegmentedControlPanel onClose={handleClose} />}
           {activePage === 'colors' && <ColorsPanel onClose={handleClose} />}
+          {activePage === 'inherited' && <InheritedSgmtCntrlPanel onClose={handleClose} />}
         </CalciteShellPanel>
       )}
 
