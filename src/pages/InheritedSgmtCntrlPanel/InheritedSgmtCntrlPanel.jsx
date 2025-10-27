@@ -4,7 +4,8 @@ import {
   CalciteSegmentedControl,
   CalciteSegmentedControlItem,
   CalciteAccordion,
-  CalciteAccordionItem
+  CalciteAccordionItem,
+  CalciteCard
 } from '@esri/calcite-components-react'
 import { useState, useMemo } from 'react'
 import { searchProjects } from '../../data/projectsData'
@@ -43,7 +44,7 @@ function InheritedSgmtCntrlPanel({ onClose }) {
       
       case 'all':
       default:
-        return { 'All Items': filtered }
+        return { 'All Projects': filtered }
     }
   }, [activeFilter, searchTerm])
 
@@ -54,6 +55,13 @@ function InheritedSgmtCntrlPanel({ onClose }) {
       month: '2-digit',
       year: 'numeric'
     })
+  }
+
+  const getSubtitle = (groupName, itemCount) => {
+    if (activeFilter === 'all') {
+      return `Total: ${itemCount} project${itemCount !== 1 ? 's' : ''}`
+    }
+    return `${itemCount} project${itemCount !== 1 ? 's' : ''}`
   }
 
   return (
@@ -97,27 +105,61 @@ function InheritedSgmtCntrlPanel({ onClose }) {
           </CalciteSegmentedControlItem>
         </CalciteSegmentedControl>
 
-        {/* Accordion */}
-        <CalciteAccordion>
-          {Object.entries(groupedData).map(([groupName, items]) => (
-            <CalciteAccordionItem 
-              key={groupName}
-              heading={groupName}
-            >
-              <div className={styles.groupContent}>
-                {items.map((item) => (
-                  <div key={item.id} className={styles.projectItem}>
-                    <h4 className={styles.siteTitle}>{item.siteTitle}</h4>
-                    <p className={styles.shortDescription}>{item.shortDescription}</p>
-                    <p className={styles.groupedByType}>Grouped by Type: {item.type}</p>
-                    <p className={styles.updated}>Updated: {formatDate(item.updated)}</p>
-                    <p className={styles.groupedByClient}>Grouped by Client: {item.client}</p>
-                  </div>
-                ))}
-              </div>
-            </CalciteAccordionItem>
-          ))}
-        </CalciteAccordion>
+        {/* Accordion with Data Cards */}
+        <div className={styles.accordionContainer}>
+          <CalciteAccordion>
+            {Object.entries(groupedData).map(([groupName, items]) => (
+              <CalciteAccordionItem 
+                key={groupName}
+                heading={groupName}
+                description={getSubtitle(groupName, items.length)}
+                open={activeFilter === 'all'}
+              >
+                <div className={styles.cardsContainer}>
+                  {items.map((item) => (
+                    <CalciteCard key={item.id} className={styles.projectCard}>
+                      <div className={styles.cardContent}>
+                        <div className={styles.cardHeader}>
+                          <h3 className={styles.cardTitle}>{item.siteTitle}</h3>
+                        </div>
+                        
+                        <div className={styles.cardBody}>
+                          <p className={styles.cardDescription}>
+                            {item.shortDescription}
+                          </p>
+                        </div>
+                        
+                        <div className={styles.cardFooter}>
+                          <div className={styles.metadataGrid}>
+                            <div className={styles.metadataItem}>
+                              <span className={styles.metadataLabel}>Type:</span>
+                              <span className={styles.metadataValue}>{item.type}</span>
+                            </div>
+                            <div className={styles.metadataItem}>
+                              <span className={styles.metadataLabel}>Client:</span>
+                              <span className={styles.metadataValue}>{item.client}</span>
+                            </div>
+                            <div className={styles.metadataItem}>
+                              <span className={styles.metadataLabel}>Updated:</span>
+                              <span className={styles.metadataValue}>{formatDate(item.updated)}</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </CalciteCard>
+                  ))}
+                </div>
+              </CalciteAccordionItem>
+            ))}
+          </CalciteAccordion>
+        </div>
+
+        {/* Empty State */}
+        {Object.keys(groupedData).length === 0 && (
+          <div className={styles.emptyState}>
+            <p className={styles.emptyMessage}>No projects found matching your search.</p>
+          </div>
+        )}
       </div>
     </CalcitePanel>
   )
