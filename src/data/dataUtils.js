@@ -1,8 +1,4 @@
-/**
- * Data Utilities for Project Management
- * 
- * This file contains utility functions for data manipulation and analysis
- */
+/** utility functions for data manipulation and analysis */
 
 import { projectsData } from './projectsData'
 
